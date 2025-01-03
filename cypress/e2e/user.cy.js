@@ -15,6 +15,8 @@ describe('Orange HRM Test', () => {
     lastNameField: "[name='lastName']",
     genericField: ".oxd-input",
     dateField: "[placeholder='yyyy-dd-mm']",
+    dateCloseButton: ".--close",
+    submitButton: ".oxd-button",
   }
 
   it.only('User Info Update - Success', () => {
@@ -25,15 +27,16 @@ describe('Orange HRM Test', () => {
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.get(selectorsList.dashboardGrid)
     cy.get(selectorsList.myInfoButton).click()
-    cy.get(selectorsList.firstNameField).clear().type('A')
-    cy.get(selectorsList.middleNameField).clear().type('A')
-    cy.get(selectorsList.lastNameField).clear().type('A')
-    cy.get(selectorsList.genericField).eq(4).clear().type('EmployeeIdTest')
-    cy.get(selectorsList.genericField).eq(5).clear().type('OtherIdTest')
-    cy.get(selectorsList.genericField).eq(6).clear().type('Driver License Number Test')
-    cy.get(selectorsList.genericField).eq(7).clear().type('2029-03-07')
-    cy.get(selectorsList.genericField).eq(9).clear().type('Test Field Test')
-
+    cy.get(selectorsList.firstNameField).clear().type('Isso')
+    cy.get(selectorsList.middleNameField).clear().type('É um')
+    cy.get(selectorsList.lastNameField).clear().type('Teste')
+    cy.get(selectorsList.genericField).eq(5).clear().type('55667788')
+    cy.get(selectorsList.genericField).eq(6).clear().type('OtherIdTest')
+    cy.get(selectorsList.genericField).eq(7).clear().type('DL55')
+    cy.get(selectorsList.genericField).eq(8).clear().type('2029-09-09')
+    cy.get(selectorsList.dateCloseButton).click()
+    cy.get(selectorsList.submitButton).eq(0).click()
+    cy.get('.oxd-toast-close')
   })
   it('Login - Fail', () => {
     cy.visit ('/auth/login')
