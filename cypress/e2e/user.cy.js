@@ -1,14 +1,16 @@
 import userData from '../fixtures/users/userData.json'
 import loginPage from'../pages/loginPage'
 import dboardPage from '../pages/dashboardPage'
+import menuPage from '../pages/menuPage'
 
 const LoginPage = new loginPage
 const DashboardPage = new dboardPage
+const MenuPage = new menuPage
 
 describe('Orange HRM Test', () => {
 
   const selectorsList = {
-    myInfoButton: "[href='/web/index.php/pim/viewMyDetails']",
+
     firstNameField: "[name='firstName']",
     middleNameField: "[name='middleName']",
     lastNameField: "[name='lastName']",
@@ -25,8 +27,7 @@ describe('Orange HRM Test', () => {
     LoginPage.accessLoginPage()
     LoginPage.loginWithAnyUser(userData.userSuccess.username, userData.userSuccess.password)
     DashboardPage.checkDashboardPage()
-
-    cy.get(selectorsList.myInfoButton).click()
+    MenuPage.accessMyInfo()
     cy.get(selectorsList.firstNameField).clear().type('Isso')
     cy.get(selectorsList.middleNameField).clear().type('É um')
     cy.get(selectorsList.lastNameField).clear().type('Teste')
