@@ -17,31 +17,31 @@ class myInfoPage {
     return selectors
     }
 
-    fillNames() {
-        cy.get(this.selectorsList.firstNameField).clear().type('Isso')
-        cy.get(this.selectorsList.middleNameField).clear().type('É um')
-        cy.get(this.selectorsList.lastNameField).clear().type('Teste')
+    fillNames(firstName, middleName, lastName) {
+        cy.get(this.selectorsList().firstNameField).clear().type(firstName)
+        cy.get(this.selectorsList().middleNameField).clear().type(middleName)
+        cy.get(this.selectorsList().lastNameField).clear().type(lastName)
     }
 
-    fillId() {
-        cy.get(this.selectorsList.genericField).eq(4).clear().type('55667788')
-        cy.get(this.selectorsList.genericField).eq(5).clear().type('OtherIdTest')
-        cy.get(this.selectorsList.genericField).eq(6).clear().type('DL55')
+    fillId(employeeId, otherId, driversLicense) {
+        cy.get(this.selectorsList().genericField).eq(4).clear().type(employeeId)
+        cy.get(this.selectorsList().genericField).eq(5).clear().type(otherId)
+        cy.get(this.selectorsList().genericField).eq(6).clear().type(driversLicense)
     }
 
     fillDropdowns() {
-        cy.get(this.selectorsList.genericField).eq(7).clear().type('2029-09-09')
-        cy.get(this.selectorsList.dateCloseButton).click()
-        cy.get(this.selectorsList.nationalityButton).eq(0).click({force: true})
+        cy.get(this.selectorsList().genericField).eq(7).clear().type('2029-09-09')
+        cy.get(this.selectorsList().dateCloseButton).click()
+        cy.get(this.selectorsList().nationalityButton).eq(0).click({force: true})
         cy.get('.oxd-select-dropdown > :nth-child(4)').click({force: true})
-        cy.get(this.selectorsList.maritalButton).eq(1).click({force: true})
+        cy.get(this.selectorsList().maritalButton).eq(1).click({force: true})
         cy.get('.oxd-select-dropdown > :nth-child(4)').click({force: true})
-        cy.get(this.selectorsList.bloodTypeButton).eq(2).click({force: true})
+        cy.get(this.selectorsList().bloodTypeButton).eq(2).click({force: true})
         cy.get('.oxd-select-dropdown > :nth-child(5)').click({force: true})
     }
 
     submitUpdate() {
-        cy.get(this.selectorsList.submitButton).eq(0).click({force: true})
+        cy.get(this.selectorsList().submitButton).eq(0).click({force: true})
         cy.get('.oxd-toast-close')
     }
 }
