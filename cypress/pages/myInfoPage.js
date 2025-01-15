@@ -29,8 +29,8 @@ class myInfoPage {
         cy.get(this.selectorsList().genericField).eq(6).clear().type(driversLicense)
     }
 
-    fillDropdowns() {
-        cy.get(this.selectorsList().genericField).eq(7).clear().type('2029-09-09')
+    fillDropdowns(licenseExpiryDate) {
+        cy.get(this.selectorsList().genericField).eq(8).clear().type(licenseExpiryDate)
         cy.get(this.selectorsList().dateCloseButton).click()
         cy.get(this.selectorsList().nationalityButton).eq(0).click({force: true})
         cy.get('.oxd-select-dropdown > :nth-child(4)').click({force: true})

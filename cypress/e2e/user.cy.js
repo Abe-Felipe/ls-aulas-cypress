@@ -4,6 +4,9 @@ import dboardPage from '../pages/dashboardPage'
 import menuPage from '../pages/menuPage'
 import myInfoPage from '../pages/myInfoPage'
 
+const Chance = require('chance');
+
+const chance = new Chance();
 const LoginPage = new loginPage
 const DashboardPage = new dboardPage
 const MenuPage = new menuPage
@@ -19,7 +22,7 @@ describe('Orange HRM Test', () => {
 
     MenuPage.accessMyInfo()
 
-    MyInfoPage.fillNames('Isso', 'é', 'um teste ')
+    MyInfoPage.fillNames(chance.first(), chance.prefix(), chance.last())
     MyInfoPage.fillId('556677', '776655', '889900')
     MyInfoPage.fillDropdowns('2029-09-09')
     MyInfoPage.submitUpdate()
