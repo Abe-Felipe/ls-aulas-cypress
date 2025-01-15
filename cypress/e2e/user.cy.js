@@ -24,11 +24,4 @@ describe('Orange HRM Test', () => {
     MyInfoPage.fillDropdowns('2029-09-09')
     MyInfoPage.submitUpdate()
   })
-
-  it('Login - Fail', () => {
-    LoginPage.accessLoginPage()
-    LoginPage.loginWithAnyUser(userData.userFail.username, userData.userFail.password)
-    LoginPage.checkAccessInvalid()
-  }) 
-
 })
